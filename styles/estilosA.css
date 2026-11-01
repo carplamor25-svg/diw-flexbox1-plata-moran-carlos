@@ -1,0 +1,132 @@
+/* =====================================================
+   DAW Mobility Solicitud de beca Erasmus+
+   Carlos Plata Morán  01/11/2026
+
+   PALETA
+   Azul oscuro para la: cabecera, pie, tatulos, botan principal  #12355b
+   Fondo de pagina        #f4f6f9
+   Fondo de tarjetas      #ffffff
+   Texto                  #1b1b1b
+   Texto de ayuda         #4a5568
+   Borde de controles     #5b6b7f
+   Borde de tarjetas      #b7c0cc
+   Campo invalido         #b3261e
+   Foco                   #0a5bd3 y #ffd166 sobre fondo oscuro
+
+   INDICE
+   1. Base y estructura de la pagina y el html con el indice y los comentarios de cada parte
+   2. Cabecera y menu donde esta el Flexbox
+   3. Contenido principal
+   4. Pie de pagina donde esta el Flexbox
+    La parte B se irá aqui cuando se haga la segunda parte del proyecto
+   ===================================================== */
+
+
+/* ========================================================================================================== */
+/* Primero para la base que se va a encargar de que todo este en su sitio y no tengamos problemas con los 
+padings y los anchos como los flex box */
+
+/* 1. BASE  y estructura de la pagina y el html con los comentarios de cada parte */
+
+
+ *, *::before, *::after {  /* Esto se pone para quue todos los elementos tengan el mismo box-sizing 
+    y no tengamos problemas con los paddings y los anchos como los flex box */
+    box-sizing: border-box; 
+}
+
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  color: #1b1b1b;
+  background-color: #f4f6f9;
+}
+
+/* ========================================================================================================== */
+
+
+/* ========================================================================================================== */
+
+/*2.  CAabecera y el menu*/
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;                 
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding: 1rem 1.5rem;
+  background-color: #12355b;
+  color: #ffffff;
+}
+
+.cabecera__marca {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.menu__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu__enlace {
+  display: inline-block;
+  padding: 0.5rem 0;
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;  
+}
+
+.menu__enlace:hover { 
+    text-decoration: underline; 
+}
+
+.menu__enlace[aria-current="page"] {
+  font-weight: 700;
+  border-bottom-color: #ffd166;
+}
+
+/* ========================================================================================================== */
+
+
+/* ========================================================================================================== */
+/* 3 PIE DE Pagina con flexbox  */
+.pie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding: 1rem 1.5rem;
+  background-color: #12355b;
+  color: #ffffff;
+  font-size: 0.875rem;
+}
+
+.pie__texto { 
+    margin: 0; 
+}
+
+.pie__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pie__enlace {
+  color: #ffffff;
+  text-decoration: underline;
+}
+/* ========================================================================================================== */
