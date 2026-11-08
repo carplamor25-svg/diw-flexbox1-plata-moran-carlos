@@ -1,0 +1,712 @@
+/* =====================================================
+   DAW Mobility Solicitud de beca Erasmus+
+   Carlos Plata Morán  01/11/2026
+
+   PALETA
+   Azul oscuro para la: cabecera, pie, tatulos, botan principal  #12355b
+   Fondo de pagina        #f4f6f9
+   Fondo de tarjetas      #ffffff
+   Texto                  #1b1b1b
+   Texto de ayuda         #4a5568
+   Borde de controles     #5b6b7f
+   Borde de tarjetas      #b7c0cc
+   Campo invalido         #b3261e
+   Foco                   #0a5bd3 y #ffd166 sobre fondo oscuro
+
+   INDICE
+   1. Base y estructura de la pagina y el html con el indice y los comentarios de cada parte
+   2. Cabecera y menu donde esta el Flexbox
+   3. Contenido principal
+   4. Pie de pagina donde esta el Flexbox
+    La parte B se irá aqui cuando se haga la segunda parte del proyecto
+   ===================================================== */
+
+
+/* ========================================================================================================== */
+/* Primero para la base que se va a encargar de que todo este en su sitio y no tengamos problemas con los 
+padings y los anchos como los flex box */
+
+/* 1. BASE  y estructura de la pagina y el html con los comentarios de cada parte */
+
+
+ *, *::before, *::after {  /* Esto se pone para quue todos los elementos tengan el mismo box-sizing 
+    y no tengamos problemas con los paddings y los anchos como los flex box */
+    box-sizing: border-box; 
+}
+
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  color: #1b1b1b;
+  background-color: #f4f6f9;
+}
+
+/* ========================================================================================================== */
+
+
+/* ========================================================================================================== */
+
+/*2.  CAabecera y el menu*/
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;                 
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding: 1rem 1.5rem;
+  background-color: #12355b;
+  color: #ffffff;
+}
+
+.cabecera__marca {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.menu__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu__enlace {
+  display: inline-block;
+  padding: 0.5rem 0;
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;  
+}
+
+.menu__enlace:hover { 
+    text-decoration: underline; 
+}
+
+.menu__enlace[aria-current="page"] {
+  font-weight: 700;
+  border-bottom-color: #ffd166;
+}
+
+/* ========================================================================================================== */
+
+
+/* ========================================================================================================== */
+/* 3 PIE DE Pagina con flexbox  */
+.pie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding: 1rem 1.5rem;
+  background-color: #12355b;
+  color: #ffffff;
+  font-size: 0.875rem;
+}
+
+.pie__texto { 
+    margin: 0; 
+}
+
+.pie__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pie__enlace {
+  color: #ffffff;
+  text-decoration: underline;
+}
+/* ========================================================================================================== */
+
+
+
+
+
+
+
+
+
+/* ========================================================================================================== */
+/* 4. Cuerpo completo  */
+.principal{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  /* text-align: center; */
+  /* padding: 1rem 1.5rem; */
+  border: 1px solid #b7c0cc;
+}
+
+.contenido{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* 3fr 1fr */
+  /* grid-template-columns: 1fr; */
+  gap: 1rem;
+  /* text-align: center; */
+  /* padding: 1rem 1.5rem; */
+  margin-top: 1rem;
+  align-items: start; 
+}
+
+/* Form */
+.formulario{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 1.5rem;
+}
+
+.grupo--personales{
+  color: #1b1b1b;
+  background-color: #9fe6e2;
+  padding: 1rem 1.5rem;
+  border-radius: 1.25rem;
+
+}
+
+.grupo__titulo{
+  font-size: 1.2rem;
+  font-weight: bold;
+  /* margin-bottom: 1rem; */
+  color: #12355b;
+  /* font-weight: 700; */
+}
+
+.grupo__campos{
+  display: grid;
+  grid-template-columns:minmax(0, 1fr);
+  gap:1rem 1.5rem;
+  /* margin-bottom: 1rem; */
+  /* border-radius: 1.25rem; */
+  text-align: left;
+}
+
+.campo__control {
+  width: 100%;                 
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  font: inherit;                
+  color: inherit;
+  background-color: #ffffff;
+  border: 2px solid #5b6b7f;
+  border-radius: 0.5rem;
+}
+
+/* @media (min-width: 768px) {
+  .grupo__campos{
+    /* grid-template-columns: repeat(6, minmax(0, 1fr)); */
+    /* grid-template-columns: 3fr 1fr; */
+/*
+  }
+  .campo--nombre{
+    grid-column: span 2;
+  }
+} */
+
+
+/* Ahora le damos estilo al aside para ponerlo a
+ la derecha del formulario y que tenga un ancho fijo de 300px 
+ y que se quede fijo en la pantalla cuando hacemos scroll. */
+
+
+
+.ayuda{
+  background-color: #a0e6ee;
+  font-size: 0.875rem;
+  color: #1b1b1b;
+  /* position: sticky; */
+  top: 1rem;
+  /* width: 300px; */
+  /* display: grid; */
+  text-align: left;
+  gap: 1rem;
+  /* grid-template-columns: repeat(1, 1fr); */
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #b7c0cc
+}
+
+.ayuda__titulo{
+  text-align: left;
+  font-size: 1rem;
+  /* text-align: center; */
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #12355b;
+  font-weight: bold;
+  margin: 0 0 1rem;
+}
+
+.ayuda__paso {
+  display: grid;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.75rem;
+  /* flex-direction: row;
+  align-items: flex-start; */
+  text-align: left;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.ayuda__numero {
+  font-weight: bold;
+}
+
+.ayuda__texto {
+  margin: 0; 
+  text-align: left;
+}
+/* .ayuda__paso {
+  display: flex;
+  align-items: flex-start; 
+  gap: 1rem;               
+  margin-bottom: 1.5rem;
+  justify-content: space-between;
+
+}
+
+.ayuda__texto{
+  margin-left:0rem;
+} */
+
+/* .ayuda__numero{
+  margin-left:0rem;
+  /* display: inline-block; */
+/* }
+
+
+
+.ayuda__lista{
+  list-style-type: none;
+} */
+
+
+/* ========================================================================================================== */
+
+/* PARTE B - HEADER */ 
+/* Estas son clases generales que van a ocupar 
+todo el header y que se van a usar en todo el header y en el pie de pagina. */
+/* Clases que tenemos en todo el header */
+/* .cabecera, .menu__lista, 
+.menu__enlace, .pie, 
+.pie__texto, .pie__lista, .pie__enlace {
+}  */
+
+
+
+
+
+
+
+
+
+/* MAIN */
+
+/* Tiene 8 bloques que son fielsed y 2 aside entonces son un css de 8 bloques 
+y 2 aside que son 10 bloques en total. */
+
+/* Las clases divididas en 10 bloques son:
+Primero las del Main generales y luego contanto por apartado las clases de los 
+fieldset y de los aside. */
+
+/* Main clases: principal, contenido y formulario */
+/* que equivalen al el main el div y el form  */
+
+/* AHora si los fieldset */
+/* Ahora dentro de cada fielset tenemos 
+divididos en bloques con divs que contien todas las entidades 
+del formulario  */
+
+/* Fieldset 1: datosPersonales
+Div 1: grupo_campos
+
+Fieldset 2: datosContacto  
+fielset: grupo y grupo--personales
+legent grupo___titulo
+primer div grupo__campo
+segundo div campo y campo--nombre
+lable 
+
+Fieldset 3: datosBeca
+
+Fieldset 4: datosEstudios 
+
+Fieldset 5: datosIdiomas
+
+Fieldset 6: datosDocumentacion
+
+Field set 7: datosDeclaracion
+
+Field set 8: datosFirma */
+
+
+
+/* FOOTER */
+
+/* ========================================================================================================== */
+/* 5. ENLACE PARA SALTAR con sus FOCO Y TEXTOS DE ARRIBA */
+
+/* el enlace de saltar al contenido se esconde arriba y solo aparece cuando se llega a el con el tabulador */
+.salto {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 1rem;
+  background-color: #ffd166;
+  color: #12355b;
+  transform: translateY(-100%);
+}
+
+.salto:focus {
+  transform: translateY(0);
+}
+
+/* Foco azul sobre un fondo claro y amarillo sobre un fondo oscuro, solo cuando se pasa el raton por encima */
+a:focus-visible, button:focus-visible, .campo__control:focus-visible, .opcion__marca:focus-visible {
+  outline: 3px solid #0a5bd3;
+  outline-offset: 2px;
+}
+
+.cabecera a:focus-visible,.pie a:focus-visible {
+  outline-color: #ffd166;
+}
+
+.principal h1, .principal > p {
+  margin: 0;
+}
+
+.principal h1 {
+  font-size: 1.5rem;
+  color: #12355b;
+}
+/* ========================================================================================================== */
+
+
+/* ========================================================================================================== */
+/* 6. las tarjetas del formulario que corresponden a los 4 grupos de fielset restantes */
+
+.grupo {
+  min-width: 0;            
+  margin: 0;
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #b7c0cc;
+  border-radius: 0.5rem;
+}
+
+/* para que el titulo no se salga por los border al aumentar o disminuir el tamalo de la pagina */
+.grupo__titulo {
+  padding: 0 0.5rem;
+}
+/* ========================================================================================================== */
+
+
+/* ========================================================================================================== */
+/* 7. campos que ayudaran al control del grid */
+
+.campo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); 
+  align-content: start;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.campo__etiqueta {
+  font-weight: 700;
+}
+
+/* Complemento del .campo__control para que de esta forma  no se salga de su columna */
+.campo__control {
+  min-width: 0;
+  max-width: 100%;
+}
+
+textarea.campo__control {
+  resize: vertical;
+}
+
+/* Si un campo es invalido despues de que el usuario lo toque el borde se pone rojo */
+.campo__control:user-invalid {
+  border-color: #b3261e;
+}
+
+.campo__ayuda {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #4a5568;
+}
+
+.campo__pie {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.25rem;
+}
+
+.telefono {
+  display: grid;
+  grid-template-columns: minmax(6rem, 9.5rem) minmax(0, 1fr);
+  gap: 0.5rem;
+}
+/* ========================================================================================================== */
+
+
+/* ========================================================================================================== */
+/* 8.las opciones de los botones y de los cuadros que contienen todos los datos */
+
+/* Conjuntos de radios y casillas para que asi el fieldset sin ningun aspecto de tarjeta heredado de otra propiedad de arriba*/
+.opciones {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.opciones__pregunta {
+  padding: 0;
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+
+
+
+
+.opciones__lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(8rem, 100%), 1fr));
+  gap: 0.5rem 1.5rem;
+}
+
+.opcion {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+}
+
+.opcion__marca {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0;
+  accent-color: #12355b;
+}
+
+/* En la opcion de privacidad el texto ocupa varias lineas para que la casilla se alinea con la primera */
+.opcion--larga {
+  align-items: start;
+}
+
+
+.botonera {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.boton {
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-weight: 700;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.boton--principal {
+  background-color: #12355b;
+  color: #ffffff;
+  border-color: #12355b;
+}
+
+.boton--secundario {
+  background-color: #ffffff;
+  color: #12355b;
+  border-color: #12355b;
+}
+
+.boton--borrar {
+  background-color: #ffffff;
+  color: #1b1b1b;
+  border-color: #5b6b7f;
+}
+
+/* ahora ponemos el cuadro de ayuda pero sin la lista de numeros del navegador y el numero dentro de un circulo */
+.ayuda__lista {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ayuda__numero {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background-color: #12355b;
+  color: #ffffff;
+  font-size: 0.875rem;
+}
+/* ========================================================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+/* ========================================================================================================== */
+/* 9 consulta de medios 1 con tamaño de 40em el interior del formulario pasa a ser una rejilla de 6 columnas donde
+para el otro formato de medios te lo he hecho con areas porque no sabia hacerlo de otrra forma la verdad y creo que con grid 
+mas el flex me he hecho un lio y no se porque motivo no se ajusta */
+@media (min-width: 40em) {
+
+  .grupo__campos {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1rem 1.5rem;
+  }
+
+  /* COn las areas de encargo de dividir las zonas en las cuales va a estar cada boton de cada apartado para 
+  las distintas medidas de los distintos dispositivos */
+  /* cada grupo se dibuja su rejilla con zonas con nombre donde los . equivalen a un hueco vacio */
+  .grupo--personales .grupo__campos {
+    grid-template-areas:
+      "nombre     nombre     apellidos  apellidos  apellidos  apellidos"
+      "correo     correo     correo     telefono   telefono   telefono"
+      "nacimiento nacimiento .          .          .          .";
+  }
+
+  .grupo--academicos .grupo__campos {
+    grid-template-areas:
+      "ciclo ciclo ciclo   curso   curso   curso"
+      "nota  nota  idiomas idiomas idiomas idiomas";
+  }
+
+  .grupo--destino .grupo__campos {
+    grid-template-areas:
+      "pais     pais     pais     incorporacion incorporacion incorporacion"
+      "duracion duracion duracion duracion      duracion      duracion";
+  }
+
+  .grupo--motivacion .grupo__campos {
+    grid-template-areas:
+      "carta       carta       carta       carta       carta       carta"
+      "curriculum  curriculum  curriculum  curriculum  curriculum  curriculum";
+  }
+
+  /* Cada campo se coloca por el nombre de su zona y nno por su posicion en el codigo porque esto sirve para q a la hora de usar el movil
+   no haya zonas y el nombre no tendria a que apuntar a apartados que no debe 
+   */
+  .campo--nombre { 
+    grid-area: nombre; 
+  }
+  .campo--apellidos {
+     grid-area: apellidos; 
+    }
+  .campo--correo { 
+    grid-area: correo; 
+  }
+  .campo--telefono {
+     grid-area: telefono; 
+    }
+  .campo--nacimiento { 
+    grid-area: nacimiento; 
+  }
+  .campo--ciclo { 
+    grid-area: ciclo; 
+  }
+  .campo--curso { 
+    grid-area: curso; 
+  }
+  .campo--nota { 
+    grid-area: nota; 
+  }
+  .campo--idiomas { 
+    grid-area: idiomas; 
+  }
+  .campo--pais { 
+    grid-area: pais; 
+  }
+  .campo--incorporacion { 
+    grid-area: incorporacion; 
+  }
+  .campo--duracion { 
+    grid-area: duracion; 
+  }
+  .campo--carta { 
+    grid-area: carta; 
+  }
+  .campo--curriculum { 
+    grid-area: curriculum; 
+  }
+
+  /* Pie de la carta que contiene la ayuda a la izquierda y limite a la derecha donde todo esta en la misma linea */
+  .campo__pie {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.25rem 1rem;
+  }
+
+  .campo__pie .campo__ayuda:last-child {
+    text-align: right;
+  }
+
+
+  .botonera {
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    grid-template-areas: "borrar . guardar enviar";
+  }
+
+  .boton--borrar { 
+    grid-area: borrar; 
+  }
+  .boton--secundario { 
+    grid-area: guardar; 
+  }
+  .boton--principal { 
+    grid-area: enviar; 
+  }
+}
+/* ========================================================================================================== */
+
+
+/* ========================================================================================================== */
+/* 10 consulta de meedios 2 en tamaño de 56em
+aqui tenemos la parte que se encarga de los medios para distintos dispositivos para que la estructura de la pagian pase 
+de una sola columna a dos y que el apartado de ayuda sea fijo al hacer scroll en la pagina web*/
+@media (min-width: 56em) {
+
+  .contenido {
+    grid-template-columns: minmax(0, 1fr) 18rem;
+  }
+
+  .ayuda {
+    position: sticky;
+    top: 1rem;
+  }
+}
+/* ========================================================================================================== */
