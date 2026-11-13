@@ -210,3 +210,29 @@ El cuadro de ayuda es una tarjeta con borde fino. Cada paso es un grid de dos co
 - [ ] Se ve el foco al recorrer la página con el tabulador.
 - [ ] En pantalla pequeña todo va en una columna, y a partir de 40em aparece la rejilla de 6 columnas.
 - [ ] A partir de 56em el cuadro de ayuda queda a la derecha.
+# Práctica 4: CSS Avanzado - DAW Mobility (Parte C)
+
+## Acabado visual e interacción
+En esta fase se ha completado el diseño de `estilos.css` aplicando técnicas avanzadas de CSS sin modificar la estructura HTML ni emplear imágenes externas:
+
+* **Arquitectura de variables (`:root`):** Todos los colores de la paleta, estados interactivos y opacidades de sombras se han centralizado en variables semánticas dentro de `:root` (como `--color-primario`, `--color-degradado-fin` o `--sombra-tarjeta`), eliminando cualquier código hexadecimal o `rgb()` del resto de la hoja de estilos.
+* **Profundidad y relieve (`box-shadow` y `text-shadow`):** Se ha añadido sombra suave (`0 0.125rem 0.5rem`) a las cuatro tarjetas del formulario y al cuadro de ayuda, comprobando que no se recorta en resoluciones de 1280px, 768px y 320px. El logotipo textual «DAW Mobility» incorpora una sombra sutil (`0 0.0625rem 0.125rem`) para mejorar su legibilidad.
+* **Degradados con respaldo:** La cabecera y el pie de página utilizan un degradado lineal horizontal (`90deg`) desde `--color-primario` (`#12355b`) hasta `--color-primario-claro` (`#1f5088`), declarando previamente un color sólido de respaldo (`background-color`) para navegadores antiguos.
+* **Microinteracciones y accesibilidad (`:hover`, `:focus-visible`, `:active`):**
+  * **Botones:** El botón principal («Enviar solicitud») cuenta con sombra en reposo que se reduce al pulsarlo (`:active`). Todos los botones elevan su posición (`translateY(-2px)`) y cambian su fondo suavemente (`0.2s`) tanto al pasar el ratón como al navegar con teclado (`:focus-visible`), especificando únicamente las propiedades animadas (`background-color`, `transform`, `box-shadow`) sin usar `all`.
+  * **Cuadro de ayuda:** Al pasar el cursor sobre cada paso, su indicador numérico escala un 10 % (`scale(1.1)`) en `0.2s` mediante `transform` para evitar desplazamientos en el texto adyacente.
+  * **Navegación:** Se ha estilizado el enlace activo mediante el selector de atributo `[aria-current="page"]` y se ha añadido subrayado interactivo en `:hover`.
+
+## Estudio de contraste (WCAG AA)
+Para garantizar la accesibilidad del texto blanco (`#ffffff`) sobre el fondo con degradado de la cabecera y el pie de página, se ha evaluado el extremo más claro del degradado (`#1f5088`), ya que representa el punto más crítico de lectura:
+
+* **Color de texto:** `#ffffff` (Blanco)
+* **Color de fondo analizado:** `#1f5088` (Extremo derecho del degradado)
+* **Ratio de contraste obtenido:** **8.17 : 1**
+* **Resultado:** **Cumple nivel AA y AAA** (el mínimo exigido por WCAG 2.1 para texto normal en nivel AA es de `4.5 : 1`).
+* **Método de medición:** Inspección directa mediante las **Herramientas de Desarrollo (DevTools)** de Google Chrome, seleccionando los elementos de texto de la cabecera y el pie en la pestaña *Elements > Computed* y verificando el indicador de contraste integrado en el selector de color (*Color Picker*).
+
+## Validación y pruebas
+* **Validación W3C:** Código CSS comprobado en el validador oficial (`jigsaw.w3.org/css-validator`) bajo el perfil CSS Level 3 + SVG con **0 errores**.
+* **Adaptabilidad y zoom:** Comprobado el uso de `flex-wrap` y unidades relativas (`rem`, `em`, `%`) ampliando el zoom del navegador al 200 % (`Ctrl` + `+`) sin cortes ni solapamientos.
+
